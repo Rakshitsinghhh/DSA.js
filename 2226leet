@@ -1,0 +1,39 @@
+/**
+ * @param {number[]} candies
+ * @param {number} k
+ * @return {number}
+ */
+function canAssign(mid,candies,k)
+{
+    let count=0;
+    for(let a=0;a<candies.length;a++)
+    {
+        if(candies[a]>=mid)
+        {
+            count+=Math.floor(candies[a]/mid);
+        }
+    }
+    return count>=k
+}
+var maximumCandies = function(candies, k) {
+    let low=1;
+    let high=Math.max(...candies);
+    let mid;
+    let maxcount=0;
+    while(low<=high)
+    {
+        let mid=Math.floor((low + high) / 2)
+        if(canAssign(mid,candies,k))
+        {
+            low=mid+1;
+            maxcount=mid;
+        }
+        else
+        {
+            high=mid-1;
+        }
+
+    }
+    return maxcount;
+    
+};
