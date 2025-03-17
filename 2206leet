@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var divideArray = function(nums) {
+    const nmap=new Map();
+
+    for(let i=0;i<nums.length;i++)
+    {
+        nmap.set(nums[i],(nmap.get(nums[i]) || 0)+1);
+    }
+
+    for(const [key,value] of nmap)
+    {
+        if(value%2!=0)
+        {
+            return false;
+        }
+    }
+    return true;
+    
+};
