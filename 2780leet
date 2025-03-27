@@ -1,0 +1,38 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumIndex = function(nums) {
+    let seen = new Map(); // Use a JS Map instead of C++ unordered_map
+
+    // Count occurrences of each number
+    for (let i = 0; i < nums.length; i++) {
+        seen.set(nums[i], (seen.get(nums[i]) || 0) + 1);
+    }
+
+    let majority = 0;
+    let maxf = 0;
+
+    // Find the majority element
+    for (let [ele, count] of seen) {
+        if (count > maxf) {
+            maxf = count;
+            majority = ele;
+        }
+    }
+
+    let prefixc = 0;
+    // Find the minimum index that satisfies the condition
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === majority) {
+            prefixc++;
+            maxf--;
+        }
+        if (prefixc * 2 > (i + 1) && maxf * 2 > (nums.length - i - 1)) {
+            return i;
+        }
+    }
+    
+    return -1;
+};
+
