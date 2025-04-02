@@ -1,0 +1,21 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maximumTripletValue = function(nums) {
+    let ans=0;
+    let n=nums.length
+    for(let k=0;k<n;k++)
+    {
+        for(let j=0;j<k;j++)
+        {
+            for(let i=0;i<j;i++)
+            {
+                let maybe=(nums[i] - nums[j]) * nums[k]
+                ans=Math.max(maybe,ans);
+            }
+        }
+    }
+    return ans;
+    
+};
