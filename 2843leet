@@ -1,0 +1,26 @@
+var countSymmetricIntegers = function(low, high) {
+    let count = 0;
+    
+    for (let i = low; i <= high; i++) {
+        let str = i.toString();
+        let len = str.length;
+        
+        if (len % 2 === 0) {
+            let half = len / 2;
+            let sum1 = 0, sum2 = 0;
+            
+            for (let j = 0; j < half; j++) {
+                sum1 += parseInt(str[j]);
+            }
+            for (let j = half; j < len; j++) {
+                sum2 += parseInt(str[j]);
+            }
+            
+            if (sum1 === sum2) {
+                count++;
+            }
+        }
+    }
+    
+    return count;
+};
