@@ -1,0 +1,30 @@
+/**
+ * @param {number[]} differences
+ * @param {number} lower
+ * @param {number} upper
+ * @return {number}
+ */
+var numberOfArrays = function(differences, lower, upper) {
+    let current=0;
+    let mini=0;
+    let max=0;
+
+    for(let i=0;i<differences.length;i++)
+    {
+        current+=differences[i];
+        mini=Math.min(mini,current);
+        max=Math.max(max,current);
+
+    }
+
+    let count=(upper-lower)-(max-mini)+1;
+    
+    if(count>0)
+    {
+        return count;
+    }
+
+    return 0;
+
+    
+};
