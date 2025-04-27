@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countSubarrays = function(nums) {
+    let count=0;
+    for(let i=0;i+2<nums.length;i++)
+    {
+        let sarray=[]
+        sarray.push(nums[i]);
+        sarray.push(nums[i+1]);
+        sarray.push(nums[i+2]);
+
+        let ans=sarray[0]+sarray[2];
+        if(ans*2==sarray[1])
+        {
+            count++;
+        }
+    }
+    return count;
+    
+};
